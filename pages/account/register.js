@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import Link from 'next/link'
 import Layout from "../../components/Layout";
 import styles from '../../styles/AuthForm.module.css'
-import {useState, useContext} from "react";
+import {useState, useContext, useEffect} from "react";
 import AuthContext from "../../context/AuthContext";
 
 
@@ -16,6 +16,8 @@ const RegisterPage = () => {
     const [passwordConfirm, setPasswordConfirm] = useState('')
 
     const {register, error} = useContext(AuthContext)
+
+    useEffect(() => error && toast.error(error))
 
     const handleSubmit = (e) => {
         e.preventDefault();
